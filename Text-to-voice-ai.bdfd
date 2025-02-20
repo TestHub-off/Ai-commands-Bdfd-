@@ -1,0 +1,10 @@
+# Text  To voice Ai
+
+$nomention
+$c[First Get Your key in the server,This code doesn't join in the vc  only send mp3 file you can make in python etc]
+$argsCheck[1;You Need say something]
+$httpGet[http://fi4.bot-hosting.net:22869/api/ai/tts?input=$url[encode;$message]&lang=English&voice=Emily&key=Your_KEY]
+$title[Text To Voice ai]
+$description[Your Mp3 File $httpResult[result;0;url]]
+$footer[Requested by $username¡]
+$color[1877F2]
