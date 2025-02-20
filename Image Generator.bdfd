@@ -1,0 +1,61 @@
+# Image Generator Ai Replace Your apikey on the httpGet[]
+
+
+$nomention
+$defer $reply
+$allowUserMentions[]
+
+$try
+ $onlyIf[$guildID!=;]
+$catch
+ $ephemeral
+ You cannot use this command in DM!
+ $stop
+$endtry
+
+$try
+ $globalCooldown[10s;]
+$catch
+ $ephemeral
+ You are on cooldown! Try again <t:$sum[$getTimestamp;$getCooldown[global]]:R>
+ $stop
+$endtry
+
+$try
+ $var[url;$url[encode;$message[1;prompt]]]
+ $var[model;$random[1;1000]]
+ $httpGet[https://test-hub.kys.gay/api/image?prompt=$var[url]&model=$var[model]&key=]
+
+ $if[$checkContains[$httpResult[image];true]]
+ $addField[❌ Message:;Failed to retrieve an image URL from the API.]
+ $title[❌ An error occurred during the operation.]
+ $description[🖼️ Prompt: ```$message[1;prompt]``` 🪪 Image ID: ```$httpResult[image_id]``` ❌ Error: ```$httpResult[success]```]
+ $author[$username[$botID] AI Image Generator | 2025]
+ $authorIcon[$userAvatar[$botID]]
+ $thumbnail[$userAvatar[$authorID]]
+ $footer[Requested by $username]
+ $footerIcon[$userAvatar[$authorID]]
+ $addTimestamp
+ $color[#CCFFFF]
+ $addButton[no;$getBotInvite;Invite Bot;link;no;]
+
+ $else
+ $embeddedURL[$httpResult[image]]
+ $image[$httpResult[image]]
+ $title[__$httpResult[message]__]
+ $description[🖼️ Prompt: ```$message[1;prompt]``` Image ID: ```$httpResult[image_id]``` ✅ Success: ```$httpResult[success]```]
+ $author[$username[$botID] AI Image Generator | 2025]
+ $authorIcon[$userAvatar[$botID]]
+ $thumbnail[$userAvatar[$authorID]]
+ $footer[Requested by $username]
+ $footerIcon[$userAvatar[$authorID]]
+ $addTimestamp
+ $color[#CCFFFF]
+ $addButton[no;$getBotInvite;Invite Bot;link;no;:LOGOBOTYANZZ:]
+
+ $endif
+$catch
+ $ephemeral
+ Something went wrong while processing your request.
+$endtry
+
