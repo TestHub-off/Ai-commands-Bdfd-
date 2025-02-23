@@ -1,0 +1,15 @@
+$c[preview https://cdn.discordapp.com/attachments/1327648226538553397/1343252585271791647/Screenshot_2025-02-23-18-05-56-582_com.discord-edit.jpg?ex=67bc98f4&is=67bb4774&hm=720a07a8c3be3dd111f3526ca6d28829c5be79ab8f6641afcaebde9329b053ec&]
+$c[we offer support and updates in http://test-hub.kys.gay/server]
+$c[If the API doesn't work/the command tell me in the support server to fix asap!]
+
+$var[json;{"token": "TOKEN_REPLACE",
+    "guild_id": "$guildID",
+    "channel_id": "$channelID",
+    "message_text": "$message",
+    "user_id": "$userID[$username]"}]
+
+$httpPost[http://fi4.bot-hosting.net:22869/text_to_audiobdfd;$var[json]]
+$suppressErrors[API Offline please tell the owner]
+$argsCheck[1;# You need say something More!]
+$deletecommand
+$httpResult
