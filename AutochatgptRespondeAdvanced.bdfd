@@ -1,0 +1,13 @@
+$c[To generate a image start the word generate image dog, or what u want u Ned start these words "generate"image"]
+$c[The channels it's not will be saved If the API will offline you Will need to activate again]
+$c[if it's inactive the Channel the bot will be offline You Need to start Again]
+$c[we offer support and updates in http://test-hub.kys.gay/server]
+$c[If the API doesn't work/the command tell me in the support server to fix asap!]
+
+$var[json;{"token": "REPLACE_WICH_UR_TOKEN",
+    "guild_id": "$guildID",
+    "channel_id": "$channelID"}]
+
+$httpPost[http://fi4.bot-hosting.net:22869/activate_chatgpt;$var[json]]
+$httpResult
+
